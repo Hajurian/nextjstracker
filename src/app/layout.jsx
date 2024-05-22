@@ -21,6 +21,7 @@ export default async function RootLayout({ children }) {
           <nav className="sidebar">
             <h1>Title</h1>
             {session ? <UserData /> : null}
+            <Link href="/">Home</Link>
             <Link href="/todos">Todos</Link>
             <AuthButton />
           </nav>

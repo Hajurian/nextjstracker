@@ -3,15 +3,15 @@ import styles from "@/app/styles/create.module.css";
 import { Button } from "@mui/material";
 import { useState } from "react";
 export default function CreateTodo(props) {
-  const [title, setTitle] = useState("");
+  const [todo, setTodo] = useState("");
   const [description, setDescription] = useState("");
   async function handleSubmit(e) {
     e.preventDefault();
     props.handleSubmit({
-      title: title,
+      todo: todo,
       description: description,
     });
-    setTitle("");
+    setTodo("");
     setDescription("");
     props.submitOnClose();
   }
@@ -21,9 +21,9 @@ export default function CreateTodo(props) {
         <label>Task</label>
         <input
           type="text"
-          value={title}
+          value={todo}
           onChange={(e) => {
-            setTitle(e.target.value);
+            setTodo(e.target.value);
           }}
         />
         <label>Description</label>

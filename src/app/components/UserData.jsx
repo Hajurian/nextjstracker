@@ -10,6 +10,7 @@ export async function getUser(email) {
     body: JSON.stringify({
       email,
     }),
+    cache: "no-store",
   });
   return res.json();
 }
