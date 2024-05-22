@@ -7,7 +7,6 @@ const session = await getServerSession();
 export default function Todos() {
   async function handleSubmit(data) {
     "use server";
-    console.log(data.title);
   }
 
   return (
