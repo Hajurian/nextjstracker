@@ -1,6 +1,8 @@
 import clientPromise from "@/app/lib/mongodb";
+
 export async function POST(req) {
   const { email } = await req.json();
+
   const mongoClient = await clientPromise;
   const user = await mongoClient
     .db("NextjsTracker")

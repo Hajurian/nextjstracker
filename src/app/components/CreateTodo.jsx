@@ -2,9 +2,11 @@
 import styles from "@/app/styles/create.module.css";
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 export default function CreateTodo(props) {
   const [todo, setTodo] = useState("");
   const [description, setDescription] = useState("");
+  const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
     props.handleSubmit({
@@ -13,6 +15,8 @@ export default function CreateTodo(props) {
     });
     setTodo("");
     setDescription("");
+    router.refresh();
+    router.push("/todos");
     props.submitOnClose();
   }
   return (
