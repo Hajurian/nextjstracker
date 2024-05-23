@@ -1,22 +1,29 @@
 "use client";
 import styles from "@/app/styles/create.module.css";
-import { Button } from "@mui/material";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 export default function CreateTodo(props) {
   const [todo, setTodo] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
+
   async function handleSubmit(e) {
     e.preventDefault();
-    props.handleSubmit({
-      todo: todo,
-      description: description,
+    await fetch("http://localhost:3000/api/updateTodos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: props.email,
+        todo: todo,
+        description: description,
+      }),
+      cache: "no-store",
     });
     setTodo("");
     setDescription("");
     router.refresh();
-    router.push("/todos");
     props.submitOnClose();
   }
   return (

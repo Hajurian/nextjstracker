@@ -8,19 +8,23 @@ body {
   overflow:hidden;
   height:100%;
   width:100%;
+  background-color: #111526;
 }
 .sidebar {
-  border:1px solid black;
   display: flex;
   flex-direction: column;
   width:24rem;
   height:95%;
   margin:2rem;
+  background-color: #161b2e;
+  color:white;
+  border-radius: 25px;
 }
 .maincontent {
-  border: 1px solid red;
-  width:100%;
+  border-radius: 25px;
+  width:125rem;
   margin-right:2rem;
   height:95%;
+  background-color: #161b2e;
 
 }

@@ -7,14 +7,10 @@ export default function CreateTodoModal(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   return (
     <>
       <Modal open={open} onClose={handleClose}>
-        <CreateTodo
-          handleSubmit={props.handleSubmit}
-          submitOnClose={handleClose}
-        />
+        <CreateTodo submitOnClose={handleClose} email={props.email} />
       </Modal>
       <Fab color="primary" aria-label="add" onClick={handleOpen}>
         <AddIcon />

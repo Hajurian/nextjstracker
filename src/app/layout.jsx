@@ -23,6 +23,7 @@ export default async function RootLayout({ children }) {
             {session ? <UserData /> : null}
             <Link href="/">Home</Link>
             <Link href="/todos">Todos</Link>
+            <Link href="/">Habits</Link>
             <AuthButton />
           </nav>
           <main className="maincontent">{children}</main>
