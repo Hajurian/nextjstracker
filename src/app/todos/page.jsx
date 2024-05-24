@@ -28,12 +28,19 @@ export default async function Todos() {
     <>
       <div className={styles.topbar}>
         <h1>All Tasks</h1>
-        <CreateTodoModal />
+        <CreateTodoModal email={session.user.email} />
       </div>
       <div className={styles.todoscontainer}>
         {currentUser &&
           currentUser.map((todo, id) => {
-            return <Todo key={id} title={todo.todo} desc={todo.description} />;
+            return (
+              <Todo
+                key={id}
+                title={todo.todo}
+                desc={todo.description}
+                email={session.user.email}
+              />
+            );
           })}
       </div>
     </>

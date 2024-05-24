@@ -22,7 +22,9 @@ export default async function RootLayout({ children }) {
             <h1>Title</h1>
             {session ? <UserData /> : null}
             <Link href="/">Home</Link>
-            <Link href="/todos">Todos</Link>
+            <Link href="/todos" prefetch={true}>
+              Todos
+            </Link>
             <Link href="/">Habits</Link>
             <AuthButton />
           </nav>

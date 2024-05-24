@@ -6,7 +6,6 @@ export default function CreateTodo(props) {
   const [todo, setTodo] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
-
   async function handleSubmit(e) {
     e.preventDefault();
     await fetch("http://localhost:3000/api/updateTodos", {

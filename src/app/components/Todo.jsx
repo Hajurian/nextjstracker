@@ -1,6 +1,8 @@
 "use client";
 import styles from "@/app/styles/todos.module.css";
+import { useRouter } from "next/navigation";
 export default function Todo(props) {
+  const router = useRouter();
   async function handleDelete() {
     await fetch("http://localhost:3000/api/removeTodo", {
       method: "POST",
@@ -12,6 +14,7 @@ export default function Todo(props) {
         todo: props.title,
       }),
     });
+    router.refresh();
   }
   return (
     <>
