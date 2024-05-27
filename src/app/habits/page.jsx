@@ -1,6 +1,7 @@
+import CreateTodoModal from "../components/CreateTodoModal";
 import { getServerSession } from "next-auth";
+import styles from "@/app/styles/todos.module.css";
 import { redirect } from "next/navigation";
-import Todo from "../components/Todo";
 
 export default async function Todos() {
   const session = await getServerSession();
@@ -19,22 +20,16 @@ export default async function Todos() {
       }),
     });
     const user = await res.json();
-    return user.user.todos;
+    return user.user.habits;
   }
   const currentUser = await getTodos();
   return (
     <>
-      {currentUser &&
-        currentUser.map((todo, id) => {
-          return (
-            <Todo
-              key={id}
-              title={todo.todo}
-              desc={todo.description}
-              email={session.user.email}
-            />
-          );
-        })}
+      <div className={styles.topbar}>
+        <h1>All Habits</h1>
+        <CreateTodoModal email={session.user.email} />
+      </div>
+      <div className={styles.todoscontainer}></div>
     </>
   );
 }

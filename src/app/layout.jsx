@@ -25,7 +25,7 @@ export default async function RootLayout({ children }) {
             <Link href="/todos" prefetch={true}>
               Todos
             </Link>
-            <Link href="/">Habits</Link>
+            <Link href="/habits">Habits</Link>
             <AuthButton />
           </nav>
           <main className="maincontent">{children}</main>
