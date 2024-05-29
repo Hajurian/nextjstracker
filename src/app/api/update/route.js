@@ -26,7 +26,7 @@ export async function POST(req) {
       .updateOne(
         { email: email },
         {
-          $push: { habits: { habit: todo, id: id } },
+          $push: { habits: { habit: todo, id: id, check: false } },
         }
       );
     if (todoToAdd) {

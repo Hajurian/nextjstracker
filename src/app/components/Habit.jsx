@@ -15,12 +15,25 @@ export default function Todo(props) {
       body: JSON.stringify({
         email: props.email,
         id: props.id,
+        type: "habit",
       }),
     });
     router.refresh();
   }
-  function handleClick() {
+  async function handleClick() {
     setMarked(!marked);
+    await fetch("http://localhost:3000/api/habitCheck", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: props.email,
+        id: props.id,
+        check: marked,
+      }),
+    });
+    router.refresh();
   }
   return (
     <>
