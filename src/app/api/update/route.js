@@ -1,19 +1,38 @@
 import clientPromise from "@/app/lib/mongodb";
 export async function POST(req) {
-  const { email, todo, description } = await req.json();
+  const { email, todo, description, type, id } = await req.json();
   const mongoClient = await clientPromise;
-  const todoToAdd = await mongoClient
-    .db("NextjsTracker")
-    .collection("Users")
-    .updateOne(
-      { email: email },
-      {
-        $push: { todos: { todo: todo, description: description } },
-      }
-    );
-  if (todoToAdd) {
-    return Response.json({ message: "Successfully pushed" }, { status: 200 });
+  if (type == "todos") {
+    //ADDING TO TODOS
+    const todoToAdd = await mongoClient
+      .db("NextjsTracker")
+      .collection("Users")
+      .updateOne(
+        { email: email },
+        {
+          $push: { todos: { todo: todo, description: description, id: id } },
+        }
+      );
+    if (todoToAdd) {
+      return Response.json({ message: "Successfully pushed" }, { status: 200 });
+    } else {
+      return Response.json({ message: "Invalid user." }, { status: 500 });
+    }
   } else {
-    return Response.json({ message: "Invalid user." }, { status: 500 });
+    //ADDING TO HABITS
+    const todoToAdd = await mongoClient
+      .db("NextjsTracker")
+      .collection("Users")
+      .updateOne(
+        { email: email },
+        {
+          $push: { habits: { habit: todo, id: id } },
+        }
+      );
+    if (todoToAdd) {
+      return Response.json({ message: "Successfully pushed" }, { status: 200 });
+    } else {
+      return Response.json({ message: "Invalid user." }, { status: 500 });
+    }
   }
 }

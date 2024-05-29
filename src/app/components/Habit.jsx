@@ -1,8 +1,11 @@
 "use client";
-import styles from "@/app/styles/todos.module.css";
+import styles from "@/app/styles/habits.module.css";
 import { useRouter } from "next/navigation";
+import { Checkbox } from "@mui/material";
+import { useState } from "react";
 export default function Todo(props) {
   const router = useRouter();
+  const [marked, setMarked] = useState(false);
   async function handleDelete() {
     await fetch("http://localhost:3000/api/remove", {
       method: "POST",
@@ -11,16 +14,19 @@ export default function Todo(props) {
       },
       body: JSON.stringify({
         email: props.email,
-        todo: props.title,
+        id: props.id,
       }),
     });
     router.refresh();
   }
+  function handleClick() {
+    setMarked(!marked);
+  }
   return (
     <>
-      <div className={styles.todocontainer}>
+      <div className={styles.habitcontainer}>
         <h1>{props.title}</h1>
-        <h1>{props.desc}</h1>
+        <Checkbox onChange={handleClick} />
         <button onClick={handleDelete}>Delete</button>
       </div>
     </>

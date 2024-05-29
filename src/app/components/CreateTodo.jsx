@@ -15,6 +15,8 @@ export default function CreateTodo(props) {
       },
       body: JSON.stringify({
         email: props.email,
+        type: props.type,
+        id: Math.floor(Math.random() * 100000000) + 10000000,
         todo: todo,
         description: description,
       }),

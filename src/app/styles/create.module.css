@@ -8,7 +8,6 @@
     height:32rem;
     display: flex;
     flex-direction: column;
-}
-.test {
-    color:red;
+    color:	#FAF9F6;
+    background-color: #161b2e;
 }

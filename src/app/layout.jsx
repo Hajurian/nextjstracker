@@ -4,7 +4,6 @@ import AuthButton from "./components/AuthButton";
 import SessionProvider from "@/app/components/SessionProvider";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
-import UserData from "./components/UserData";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -19,13 +18,17 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <SessionProvider session={session}>
           <nav className="sidebar">
-            <h1>Title</h1>
-            {session ? <UserData /> : null}
-            <Link href="/">Home</Link>
-            <Link href="/todos" prefetch={true}>
+            <h1 className="title">Productivity Tracker</h1>
+            {/* {session ? <UserData /> : null} */}
+            <Link href="/" className="link">
+              Home
+            </Link>
+            <Link href="/todos" prefetch={true} className="link">
               Todos
             </Link>
-            <Link href="/habits">Habits</Link>
+            <Link href="/habits" className="link">
+              Habits
+            </Link>
             <AuthButton />
           </nav>
           <main className="maincontent">{children}</main>

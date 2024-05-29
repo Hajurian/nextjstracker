@@ -1,15 +1,16 @@
 import CreateTodoModal from "../components/CreateTodoModal";
 import { getServerSession } from "next-auth";
-import styles from "@/app/styles/todos.module.css";
+import styles from "@/app/styles/habits.module.css";
 import { redirect } from "next/navigation";
+import Habit from "../components/Habit";
 
-export default async function Todos() {
+export default async function Habits() {
   const session = await getServerSession();
   if (!session || !session.user) {
     redirect("/api/auth/signin");
   }
   //function to get the todos
-  async function getTodos() {
+  async function getHabits() {
     const res = await fetch("http://localhost:3000/api/getUser", {
       method: "POST",
       headers: {
@@ -22,14 +23,32 @@ export default async function Todos() {
     const user = await res.json();
     return user.user.habits;
   }
-  const currentUser = await getTodos();
+  const currentUser = await getHabits();
+
+  function handlePercent(percent) {
+    return `${Math.floor(Math.random() * 100000000) + 10000000}`;
+  }
   return (
     <>
       <div className={styles.topbar}>
-        <h1>All Habits</h1>
-        <CreateTodoModal email={session.user.email} />
+        <h1 className={styles.title}>All Habits {handlePercent()}</h1>
+        <div className={styles.createButton}>
+          <CreateTodoModal email={session.user.email} type="habits" />
+        </div>
       </div>
-      <div className={styles.todoscontainer}></div>
+      <div className={styles.habitscontainer}>
+        {currentUser &&
+          currentUser.map((habit, id) => {
+            return (
+              <Habit
+                key={id}
+                title={habit.habit}
+                id={habit.id}
+                email={session.user.email}
+              />
+            );
+          })}
+      </div>
     </>
   );
 }

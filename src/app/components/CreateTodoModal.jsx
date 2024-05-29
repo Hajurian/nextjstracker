@@ -10,9 +10,13 @@ export default function CreateTodoModal(props) {
   return (
     <>
       <Modal open={open} onClose={handleClose}>
-        <CreateTodo submitOnClose={handleClose} email={props.email} />
+        <CreateTodo
+          submitOnClose={handleClose}
+          email={props.email}
+          type={props.type}
+        />
       </Modal>
-      <Fab color="primary" aria-label="add" onClick={handleOpen}>
+      <Fab color="secondary" aria-label="add" onClick={handleOpen}>
         <AddIcon />
       </Fab>
     </>

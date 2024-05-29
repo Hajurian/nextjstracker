@@ -17,8 +17,18 @@ body {
   height:95%;
   margin:2rem;
   background-color: #161b2e;
-  color:white;
+  color:	#FAF9F6;
   border-radius: 25px;
+}
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin:0.5rem;
+}
+.link {
+  font-size:large;
+  text-decoration: none;
+  color:	#FAF9F6;
 }
 .maincontent {
   border-radius: 25px;

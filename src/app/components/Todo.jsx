@@ -11,7 +11,8 @@ export default function Todo(props) {
       },
       body: JSON.stringify({
         email: props.email,
-        todo: props.title,
+        id: props.id,
+        type: "todos",
       }),
     });
     router.refresh();
@@ -20,7 +21,7 @@ export default function Todo(props) {
     <>
       <div className={styles.todocontainer}>
         <h1>{props.title}</h1>
-        <h1>{props.desc}</h1>
+        <p>{props.desc}</p>
         <button onClick={handleDelete}>Delete</button>
       </div>
     </>

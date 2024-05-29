@@ -11,8 +11,10 @@ export default async function Todos({ children }) {
   return (
     <>
       <div className={styles.topbar}>
-        <h1>All Tasks</h1>
-        <CreateTodoModal email={session.user.email} />
+        <h1 className={styles.title}>All Tasks</h1>
+        <div className={styles.createButton}>
+          <CreateTodoModal email={session.user.email} type="todos" />
+        </div>
       </div>
       <div className={styles.todoscontainer}>{children}</div>
     </>
