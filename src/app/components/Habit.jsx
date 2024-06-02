@@ -37,7 +37,9 @@ export default function Todo(props) {
   }
   return (
     <>
-      <div className={styles.habitcontainer}>
+      <div
+        className={`${styles.habitcontainer} ${marked ? styles.active : ""} `}
+      >
         <h1>{props.title}</h1>
         <Checkbox onChange={handleClick} />
         <button onClick={handleDelete}>Delete</button>

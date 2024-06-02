@@ -30,7 +30,7 @@ export default function CreateTodo(props) {
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.createTodo}>
-        <label>Task</label>
+        <label>{props.type == "todos" ? "Task" : "Habit"}</label>
         <input
           type="text"
           value={todo}
@@ -38,14 +38,19 @@ export default function CreateTodo(props) {
             setTodo(e.target.value);
           }}
         />
-        <label>Description</label>
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-        />
+        {props.type == "todos" ? (
+          <>
+            <label>Description</label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            />
+          </>
+        ) : null}
+        {props.type == "todos" ? <input type="date" /> : null}
         <button type="submit">Submit</button>
       </form>
     </>

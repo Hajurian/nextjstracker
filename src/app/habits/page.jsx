@@ -32,7 +32,7 @@ export default async function Habits() {
   return (
     <>
       <div className={styles.topbar}>
-        <h1 className={styles.title}>All Habits {handlePercent()}</h1>
+        <h1 className={styles.title}>All Habits</h1>
         <div className={styles.createButton}>
           <CreateTodoModal email={session.user.email} type="habits" />
         </div>

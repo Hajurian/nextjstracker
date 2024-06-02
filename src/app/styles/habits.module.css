@@ -26,7 +26,19 @@
 .habitcontainer {
     width:15rem;
     height:15rem;
+    margin:2rem 1rem;
+    padding-left:1rem;
+    padding-right:1rem;
     border-radius: 10px;
     background-color: #2b314a;
+    cursor: pointer;
     color:#FAF9F6;
+    transition: all 0.5s;
+}
+.habitcontainer:hover {
+    transform: scale(1.04);
+}
+.active {
+    box-shadow: #9f149f 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    border: 2px solid #9f149f;
 }
