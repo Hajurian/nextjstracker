@@ -11,3 +11,19 @@
     color:	#FAF9F6;
     background-color: #161b2e;
 }
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:3.5rem;
+    height:3.5rem;
+    border-radius: 40px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color:#b320b3;
+    transition: all 0.5s;
+}
+.add:hover {
+    transform: scale(1.04);
+}

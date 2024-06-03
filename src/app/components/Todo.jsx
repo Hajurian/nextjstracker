@@ -2,11 +2,14 @@
 import styles from "@/app/styles/todos.module.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { CiEdit } from "react-icons/ci";
+import { FaTrash } from "react-icons/fa";
 export default function Todo(props) {
   const router = useRouter();
   const [edit, setEdit] = useState(false);
   const [editTitle, setEditTitle] = useState(props.title);
   const [editDesc, setEditDesc] = useState(props.desc);
+  const [editDate, setEditDate] = useState(props.date);
   async function handleDelete() {
     await fetch("http://localhost:3000/api/remove", {
       method: "POST",
@@ -32,6 +35,7 @@ export default function Todo(props) {
         id: props.id,
         title: editTitle,
         desc: editDesc,
+        date: editDate,
       }),
     });
     setEdit(false);
@@ -48,21 +52,31 @@ export default function Todo(props) {
               setEditTitle(e.target.value);
             }}
           />
-          <textarea
+          <input
             type="text"
             value={editDesc}
             onChange={(e) => {
               setEditDesc(e.target.value);
             }}
+            maxLength={75}
           />
-          <button onClick={handleEdit}>Save</button>
-          <button
-            onClick={() => {
-              setEdit(false);
+          <input
+            type="date"
+            value={editDate}
+            onChange={(e) => {
+              setEditDate(e.target.value);
             }}
-          >
-            Cancel
-          </button>
+          />
+          <div className={styles.buttoncontainer}>
+            <button onClick={handleEdit}>Save</button>
+            <button
+              onClick={() => {
+                setEdit(false);
+              }}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </>
     );
@@ -71,15 +85,22 @@ export default function Todo(props) {
     <>
       <div className={styles.todocontainer}>
         <h1>{props.title}</h1>
-        <p>{props.desc}</p>
-        <button
-          onClick={() => {
-            setEdit(true);
-          }}
-        >
-          Edit
-        </button>
-        <button onClick={handleDelete}>Delete</button>
+        <p style={{ color: "#37e3f0" }}>{props.date}</p>
+        <p style={{ height: "4rem" }}>{props.desc}</p>
+        <div className={styles.buttoncontainer}>
+          <button
+            onClick={() => {
+              setEdit(true);
+            }}
+            className={styles.editbutton}
+          >
+            <CiEdit size={18} />
+            Edit
+          </button>
+          <button onClick={handleDelete} className={styles.deletebutton}>
+            <FaTrash size={25} />
+          </button>
+        </div>
       </div>
     </>
   );

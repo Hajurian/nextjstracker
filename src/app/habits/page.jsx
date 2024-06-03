@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import styles from "@/app/styles/habits.module.css";
 import { redirect } from "next/navigation";
 import Habit from "../components/Habit";
-import clientPromise from "../lib/mongodb";
 
 export default async function Habits() {
   const session = await getServerSession();

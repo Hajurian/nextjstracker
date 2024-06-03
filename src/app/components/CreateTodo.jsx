@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 export default function CreateTodo(props) {
   const [todo, setTodo] = useState("");
   const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
   const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +20,7 @@ export default function CreateTodo(props) {
         id: Math.floor(Math.random() * 100000000) + 10000000,
         todo: todo,
         description: description,
+        date: date,
       }),
       cache: "no-store",
     });
@@ -37,6 +39,7 @@ export default function CreateTodo(props) {
           onChange={(e) => {
             setTodo(e.target.value);
           }}
+          required
         />
         {props.type == "todos" ? (
           <>
@@ -44,13 +47,25 @@ export default function CreateTodo(props) {
             <input
               type="text"
               value={description}
+              maxLength={75}
               onChange={(e) => {
                 setDescription(e.target.value);
               }}
             />
           </>
         ) : null}
-        {props.type == "todos" ? <input type="date" /> : null}
+        {props.type == "todos" ? (
+          <>
+            <label>Due date</label>
+            <input
+              type="date"
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
+              required
+            />
+          </>
+        ) : null}
         <button type="submit">Submit</button>
       </form>
     </>

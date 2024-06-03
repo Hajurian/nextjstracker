@@ -1,6 +1,6 @@
 import clientPromise from "@/app/lib/mongodb";
 export async function POST(req) {
-  const { email, id, title, desc } = await req.json();
+  const { email, id, title, desc, date } = await req.json();
   const mongoClient = await clientPromise;
   //editing todo
   const editTodo = await mongoClient
@@ -9,7 +9,11 @@ export async function POST(req) {
     .updateOne(
       { email: email, "todos.id": id },
       {
-        $set: { "todos.$.todo": title, "todos.$.description": desc },
+        $set: {
+          "todos.$.todo": title,
+          "todos.$.description": desc,
+          "todos.$.date": date,
+        },
       }
     );
   if (editTodo) {

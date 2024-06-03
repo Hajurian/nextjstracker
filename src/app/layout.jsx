@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
             <Link href="/" className="link">
               Home
             </Link>
-            <Link href="/todos" prefetch={true} className="link">
+            <Link href="/todos" className="link">
               Todos
             </Link>
             <Link href="/habits" className="link">

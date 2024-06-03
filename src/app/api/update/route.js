@@ -1,6 +1,6 @@
 import clientPromise from "@/app/lib/mongodb";
 export async function POST(req) {
-  const { email, todo, description, type, id } = await req.json();
+  const { email, todo, description, type, id, date } = await req.json();
   const mongoClient = await clientPromise;
   if (type == "todos") {
     //ADDING TO TODOS
@@ -10,7 +10,9 @@ export async function POST(req) {
       .updateOne(
         { email: email },
         {
-          $push: { todos: { todo: todo, description: description, id: id } },
+          $push: {
+            todos: { todo: todo, description: description, date: date, id: id },
+          },
         }
       );
     if (todoToAdd) {
