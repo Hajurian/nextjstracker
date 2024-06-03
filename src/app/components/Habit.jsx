@@ -5,7 +5,7 @@ import { Checkbox } from "@mui/material";
 import { useState } from "react";
 export default function Todo(props) {
   const router = useRouter();
-  const [marked, setMarked] = useState(false);
+  const [marked, setMarked] = useState(props.check);
   async function handleDelete() {
     await fetch("http://localhost:3000/api/remove", {
       method: "POST",
@@ -41,7 +41,7 @@ export default function Todo(props) {
         className={`${styles.habitcontainer} ${marked ? styles.active : ""} `}
       >
         <h1>{props.title}</h1>
-        <Checkbox onChange={handleClick} />
+        <Checkbox onChange={handleClick} checked={marked} />
         <button onClick={handleDelete}>Delete</button>
       </div>
     </>

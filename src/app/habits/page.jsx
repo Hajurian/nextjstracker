@@ -24,10 +24,6 @@ export default async function Habits() {
     return user.user.habits;
   }
   const currentUser = await getHabits();
-
-  function handlePercent(percent) {
-    return `${Math.floor(Math.random() * 100000000) + 10000000}`;
-  }
   return (
     <>
       <div className={styles.topbar}>
