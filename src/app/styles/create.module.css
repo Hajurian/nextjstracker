@@ -23,6 +23,7 @@
     cursor: pointer;
     background-color:#b320b3;
     transition: all 0.5s;
+    margin-right: 2rem;
 }
 .add:hover {
     transform: scale(1.04);

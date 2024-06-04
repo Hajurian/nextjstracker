@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Todo from "../components/Todo";
+import styles from "@/app/styles/todos.module.css";
 
 export default async function Todos() {
   const session = await getServerSession();
@@ -24,19 +25,22 @@ export default async function Todos() {
   const currentUser = await getTodos();
   return (
     <>
-      {currentUser &&
-        currentUser.map((todo, id) => {
-          return (
-            <Todo
-              key={id}
-              title={todo.todo}
-              desc={todo.description}
-              date={todo.date}
-              id={todo.id}
-              email={session.user.email}
-            />
-          );
-        })}
+      <h1>hi</h1>
+      <div className={styles.container}>
+        {currentUser &&
+          currentUser.map((todo, id) => {
+            return (
+              <Todo
+                key={id}
+                title={todo.todo}
+                desc={todo.description}
+                date={todo.date}
+                id={todo.id}
+                email={session.user.email}
+              />
+            );
+          })}
+      </div>
     </>
   );
 }

@@ -51,6 +51,7 @@ export default function Todo(props) {
             onChange={(e) => {
               setEditTitle(e.target.value);
             }}
+            maxLength={32}
           />
           <input
             type="text"

@@ -39,6 +39,7 @@ export default function CreateTodo(props) {
           onChange={(e) => {
             setTodo(e.target.value);
           }}
+          maxLength={32}
           required
         />
         {props.type == "todos" ? (
