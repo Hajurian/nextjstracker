@@ -24,10 +24,14 @@ export default async function Habits() {
     return user.user.habits;
   }
   const currentUser = await getHabits();
+  const checkedHabits = currentUser.filter((habit) => habit.check).length;
   return (
     <>
       <div className={styles.topbar}>
-        <h1 className={styles.title}>All Habits</h1>
+        <h1 className={styles.title}>
+          All Habits -{" "}
+          {`${(checkedHabits / currentUser.length) * 100}% Completed`}
+        </h1>
         <div className={styles.createButton}>
           <CreateTodoModal email={session.user.email} type="habits" />
         </div>
