@@ -37,6 +37,7 @@ export default async function Todos() {
                 date={todo.date}
                 id={todo.id}
                 email={session.user.email}
+                time={id}
               />
             );
           })}

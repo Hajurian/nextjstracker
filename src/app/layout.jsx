@@ -20,15 +20,17 @@ export default async function RootLayout({ children }) {
           <nav className="sidebar">
             <h1 className="title">Productivity Tracker</h1>
             {/* {session ? <UserData /> : null} */}
-            <Link href="/" className="link">
-              Home
-            </Link>
-            <Link href="/todos" className="link">
-              Todos
-            </Link>
-            <Link href="/habits" className="link">
-              Habits
-            </Link>
+            <div className="links">
+              <Link href="/" className="link">
+                Home
+              </Link>
+              <Link href="/todos" className="link">
+                Todos
+              </Link>
+              <Link href="/habits" className="link">
+                Habits
+              </Link>
+            </div>
             <AuthButton />
           </nav>
           <main className="maincontent">{children}</main>
