@@ -31,6 +31,9 @@ body {
   font-size: 2.75rem;
   text-align: center;
   margin:0.5rem;
+  text-decoration: none;
+  color:#FAF9F6;
+  font-weight: 600;
 }
 .links {
   display: flex;

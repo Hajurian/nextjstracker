@@ -23,8 +23,8 @@
     margin-right: 2rem;
 }
 .habitcontainer {
-    width:15rem;
-    height:15rem;
+    width:18rem;
+    height:18rem;
     margin:2rem 1rem;
     padding-left:1rem;
     padding-right:1rem;
@@ -33,6 +33,7 @@
     cursor: pointer;
     color:#FAF9F6;
     transition: all 0.5s;
+    box-shadow: rgb(17, 20, 24) 0px 20px 30px -10px;
 }
 .habitcontainer:hover {
     transform: scale(1.04);

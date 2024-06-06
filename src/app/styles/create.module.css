@@ -3,7 +3,6 @@
     left:50%;
     top:50%;
     transform: translate(-50%, -50%);
-    border: 1px solid black;
     width:32rem;
     height:32rem;
     display: flex;
@@ -12,19 +11,60 @@
     padding:1rem;
     color:	#FAF9F6;
     background-color: #161b2e;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    animation: motion 0.5s;
 }
 .createTodo .inputbox {
     display: flex;
     flex-direction: column;
+    margin-top: 0.5rem;
+    width:25rem;
 }
 .createTodo .title {
     width:25rem;
     height:1.5rem;
+    padding:0.25rem;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
 }
 .createTodo .desc {
     width:25rem;
     height:4rem;
     resize:none;
+    outline: none;
+    padding:0.25rem;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.createTodo .date {
+    width:7rem;
+    height:2rem;
+    padding:.25rem;
+    outline:none;
+    font-size:1rem; 
+}
+.createTodo label {
+    font-size: 1.25rem;
+}
+.createTodo button {
+    margin:auto;
+    width:8rem;
+    height:3rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color:#b320b3;
+    color:#FAF9F6;
+    font-size:1.5rem;
+    transition: all 0.25s;
+    box-shadow: rgb(17, 20, 24) 0px 20px 30px -10px;
+}
+.createTodo button:hover {
+    transform: scale(1.04);
+    background-color:#8f1a8f;
 }
 .add {
     display: flex;
@@ -42,4 +82,12 @@
 }
 .add:hover {
     transform: scale(1.04);
+}
+@keyframes motion {
+    0% {
+        transform: translate(-50%, -1000px);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
 }

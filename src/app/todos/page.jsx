@@ -22,6 +22,7 @@ export default async function Todos() {
     const user = await res.json();
     return user.user.todos;
   }
+  //function to get today's date
   function makeDate() {
     let today = new Date();
     return `${today.getFullYear()}-${
@@ -30,9 +31,13 @@ export default async function Todos() {
         : `${today.getMonth() + 1}`
     }-${today.getDate() < 10 ? `0${today.getDate()}` : `${today.getDate()}`}`;
   }
+  //getting the todos and sorting them
   let currentUser = await getTodos();
   currentUser = currentUser.sort((a, b) => a.date.localeCompare(b.date));
+  //today's date
   const date = makeDate();
+  //the count to delay the card animations
+  let count = 0;
   return (
     <>
       <h1 className={styles.header}>Upcoming Tasks</h1>
@@ -40,6 +45,7 @@ export default async function Todos() {
         {currentUser &&
           currentUser.map((todo, id) => {
             if (date.localeCompare(todo.date) <= 0) {
+              count++;
               return (
                 <Todo
                   key={id}
@@ -48,7 +54,7 @@ export default async function Todos() {
                   date={todo.date}
                   id={todo.id}
                   email={session.user.email}
-                  time={id}
+                  time={count}
                 />
               );
             }
@@ -59,6 +65,7 @@ export default async function Todos() {
         {currentUser &&
           currentUser.map((todo, id) => {
             if (date.localeCompare(todo.date) > 0) {
+              count++;
               return (
                 <Todo
                   key={id}
@@ -67,7 +74,7 @@ export default async function Todos() {
                   date={todo.date}
                   id={todo.id}
                   email={session.user.email}
-                  time={id}
+                  time={count}
                 />
               );
             }

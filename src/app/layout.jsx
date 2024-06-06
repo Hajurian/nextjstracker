@@ -18,7 +18,9 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <SessionProvider session={session}>
           <nav className="sidebar">
-            <h1 className="title">Productivity Tracker</h1>
+            <Link href="/" className="title">
+              Productivity Tracker
+            </Link>
             {/* {session ? <UserData /> : null} */}
             <div className="links">
               <Link href="/" className="link">
