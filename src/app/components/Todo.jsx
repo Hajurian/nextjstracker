@@ -86,7 +86,7 @@ export default function Todo(props) {
     <>
       <div
         className={styles.todocontainer}
-        style={{ animationDelay: `${props.time * 0.2}s` }}
+        style={{ animationDelay: `${props.time * 0.1}s` }}
       >
         <h1>{props.title}</h1>
         <p style={{ color: "#37e3f0" }}>{props.date}</p>

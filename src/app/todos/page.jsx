@@ -22,24 +22,55 @@ export default async function Todos() {
     const user = await res.json();
     return user.user.todos;
   }
-  const currentUser = await getTodos();
+  function makeDate() {
+    let today = new Date();
+    return `${today.getFullYear()}-${
+      today.getMonth() + 1 < 10
+        ? `0${today.getMonth() + 1}`
+        : `${today.getMonth() + 1}`
+    }-${today.getDate() < 10 ? `0${today.getDate()}` : `${today.getDate()}`}`;
+  }
+  let currentUser = await getTodos();
+  currentUser = currentUser.sort((a, b) => a.date.localeCompare(b.date));
+  const date = makeDate();
   return (
     <>
-      <h1>hi</h1>
+      <h1 className={styles.header}>Upcoming Tasks</h1>
       <div className={styles.container}>
         {currentUser &&
           currentUser.map((todo, id) => {
-            return (
-              <Todo
-                key={id}
-                title={todo.todo}
-                desc={todo.description}
-                date={todo.date}
-                id={todo.id}
-                email={session.user.email}
-                time={id}
-              />
-            );
+            if (date.localeCompare(todo.date) <= 0) {
+              return (
+                <Todo
+                  key={id}
+                  title={todo.todo}
+                  desc={todo.description}
+                  date={todo.date}
+                  id={todo.id}
+                  email={session.user.email}
+                  time={id}
+                />
+              );
+            }
+          })}
+      </div>
+      <h1 className={styles.header}>Late Tasks</h1>
+      <div className={styles.container}>
+        {currentUser &&
+          currentUser.map((todo, id) => {
+            if (date.localeCompare(todo.date) > 0) {
+              return (
+                <Todo
+                  key={id}
+                  title={todo.todo}
+                  desc={todo.description}
+                  date={todo.date}
+                  id={todo.id}
+                  email={session.user.email}
+                  time={id}
+                />
+              );
+            }
           })}
       </div>
     </>
