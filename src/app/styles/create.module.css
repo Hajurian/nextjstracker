@@ -8,8 +8,23 @@
     height:32rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding:1rem;
     color:	#FAF9F6;
     background-color: #161b2e;
+}
+.createTodo .inputbox {
+    display: flex;
+    flex-direction: column;
+}
+.createTodo .title {
+    width:25rem;
+    height:1.5rem;
+}
+.createTodo .desc {
+    width:25rem;
+    height:4rem;
+    resize:none;
 }
 .add {
     display: flex;

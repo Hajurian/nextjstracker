@@ -32,39 +32,49 @@ export default function CreateTodo(props) {
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.createTodo}>
-        <label>{props.type == "todos" ? "Task" : "Habit"}</label>
-        <input
-          type="text"
-          value={todo}
-          onChange={(e) => {
-            setTodo(e.target.value);
-          }}
-          maxLength={32}
-          required
-        />
+        <h1>{props.type == "todos" ? "Create a Task" : "Create a Habit"}</h1>
+        <div className={styles.inputbox}>
+          <label>{props.type == "todos" ? "Task" : "Habit"}</label>
+          <input
+            type="text"
+            value={todo}
+            className={styles.title}
+            onChange={(e) => {
+              setTodo(e.target.value);
+            }}
+            maxLength={32}
+            required
+          />
+        </div>
         {props.type == "todos" ? (
           <>
-            <label>Description</label>
-            <input
-              type="text"
-              value={description}
-              maxLength={75}
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-            />
+            <div className={styles.inputbox}>
+              <label>Description</label>
+              <textarea
+                type="text"
+                value={description}
+                className={styles.desc}
+                maxLength={75}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              />
+            </div>
           </>
         ) : null}
         {props.type == "todos" ? (
           <>
-            <label>Due date</label>
-            <input
-              type="date"
-              onChange={(e) => {
-                setDate(e.target.value);
-              }}
-              required
-            />
+            <div className={styles.inputbox}>
+              <label>Due date</label>
+              <input
+                type="date"
+                className={styles.date}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                }}
+                required
+              />
+            </div>
           </>
         ) : null}
         <button type="submit">Submit</button>
