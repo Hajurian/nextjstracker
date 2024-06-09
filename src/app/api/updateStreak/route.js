@@ -1,14 +1,14 @@
 import clientPromise from "@/app/lib/mongodb";
+import { compareDate } from "@/app/components/makeDate";
 export async function POST(req) {
   const { email, id, date, prevDate, streak, longest, check } =
     await req.json();
 
   let streakVal = streak;
-  if (prevDate.localeCompare(date) > 0) {
+  if (compareDate(prevDate, date)) {
     streakVal = 0;
   }
   let change = check ? 1 : -1;
-
   //value for the longest streak
   let longestVal = streakVal >= longest ? streakVal + change : longest;
 
