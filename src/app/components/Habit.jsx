@@ -35,20 +35,21 @@ export default function Todo(props) {
         check: !marked,
       }),
     });
-    if (!marked) {
-      await fetch("http://localhost:3000/api/updateStreak", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: props.email,
-          id: props.id,
-          date: makeDate(),
-          currStreak: props.streak.streak,
-        }),
-      });
-    }
+    await fetch("http://localhost:3000/api/updateStreak", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: props.email,
+        id: props.id,
+        prevDate: props.streak.latest,
+        date: makeDate(),
+        streak: props.streak.streak,
+        longest: props.streak.longest,
+        check: !marked,
+      }),
+    });
     router.refresh();
   }
   return (
@@ -58,8 +59,12 @@ export default function Todo(props) {
       >
         <h1>{props.title}</h1>
         <div className={styles.streakcontainer}>
-          <p>Current Streak {props.streak.streak.toString()}</p>
-          <p>Longest Streak</p>
+          <p style={{ color: "#37e3f0" }}>
+            Current Streak {props.streak.streak.toString()} Days
+          </p>
+          <p style={{ color: "#37e3f0" }}>
+            Longest Streak {props.streak.longest.toString()} Days
+          </p>
         </div>
         <div className={styles.buttoncontainer}>
           <Checkbox

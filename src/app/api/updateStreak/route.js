@@ -1,8 +1,18 @@
 import clientPromise from "@/app/lib/mongodb";
 export async function POST(req) {
-  const { email, id, date, streak } = await req.json();
+  const { email, id, date, prevDate, streak, longest, check } =
+    await req.json();
+
+  let streakVal = streak;
+  if (prevDate.localeCompare(date) > 0) {
+    streakVal = 0;
+  }
+  let change = check ? 1 : -1;
+
+  //value for the longest streak
+  let longestVal = streakVal >= longest ? streakVal + change : longest;
+
   const mongoClient = await clientPromise;
-  //removing habit
   const updateStreak = await mongoClient
     .db("NextjsTracker")
     .collection("Users")
@@ -12,6 +22,8 @@ export async function POST(req) {
         $set: {
           "habits.$.streak": {
             latest: date,
+            longest: longestVal,
+            streak: streakVal + change,
           },
         },
       }

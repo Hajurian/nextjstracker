@@ -70,3 +70,6 @@
     flex-direction: column;
     justify-content: center;
 }
+.streakcontainer p {
+    line-height: 0;
+}
