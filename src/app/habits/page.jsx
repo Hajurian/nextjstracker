@@ -52,6 +52,7 @@ export default async function Habits() {
                 id={habit.id}
                 check={habit.check}
                 email={session.user.email}
+                streak={habit.streak}
               />
             );
           })}

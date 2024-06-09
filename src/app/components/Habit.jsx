@@ -1,6 +1,7 @@
 "use client";
 import styles from "@/app/styles/habits.module.css";
 import { useRouter } from "next/navigation";
+import { makeDate } from "./makeDate";
 import { Checkbox } from "@mui/material";
 import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
@@ -34,6 +35,20 @@ export default function Todo(props) {
         check: !marked,
       }),
     });
+    if (!marked) {
+      await fetch("http://localhost:3000/api/updateStreak", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: props.email,
+          id: props.id,
+          date: makeDate(),
+          currStreak: props.streak.streak,
+        }),
+      });
+    }
     router.refresh();
   }
   return (
@@ -43,7 +58,7 @@ export default function Todo(props) {
       >
         <h1>{props.title}</h1>
         <div className={styles.streakcontainer}>
-          <p>Current Streak</p>
+          <p>Current Streak {props.streak.streak.toString()}</p>
           <p>Longest Streak</p>
         </div>
         <div className={styles.buttoncontainer}>

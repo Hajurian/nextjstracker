@@ -1,4 +1,5 @@
 import clientPromise from "@/app/lib/mongodb";
+import { makeDate } from "@/app/components/makeDate";
 export async function POST(req) {
   const { email, todo, description, type, id, date } = await req.json();
   const mongoClient = await clientPromise;
@@ -28,7 +29,18 @@ export async function POST(req) {
       .updateOne(
         { email: email },
         {
-          $push: { habits: { habit: todo, id: id, check: false } },
+          $push: {
+            habits: {
+              habit: todo,
+              id: id,
+              check: false,
+              streak: {
+                latest: "",
+                streak: 0,
+                longest: 0,
+              },
+            },
+          },
         }
       );
     if (todoToAdd) {
