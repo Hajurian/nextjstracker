@@ -2,6 +2,7 @@
 import styles from "@/app/styles/habits.module.css";
 import { useRouter } from "next/navigation";
 import { Checkbox } from "@mui/material";
+import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
 export default function Todo(props) {
   const router = useRouter();
@@ -30,7 +31,7 @@ export default function Todo(props) {
       body: JSON.stringify({
         email: props.email,
         id: props.id,
-        check: marked,
+        check: !marked,
       }),
     });
     router.refresh();
@@ -41,9 +42,21 @@ export default function Todo(props) {
         className={`${styles.habitcontainer} ${marked ? styles.active : ""} `}
       >
         <h1>{props.title}</h1>
-        <Checkbox onChange={handleClick} checked={marked} color="secondary" />
-
-        <button onClick={handleDelete}>Delete</button>
+        <div className={styles.streakcontainer}>
+          <p>Current Streak</p>
+          <p>Longest Streak</p>
+        </div>
+        <div className={styles.buttoncontainer}>
+          <Checkbox
+            onChange={handleClick}
+            checked={marked}
+            color="secondary"
+            size="large"
+          />
+          <button onClick={handleDelete} className={styles.deletebutton}>
+            <FaTrash size={25} />
+          </button>
+        </div>
       </div>
     </>
   );

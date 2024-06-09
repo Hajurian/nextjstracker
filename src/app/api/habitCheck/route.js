@@ -9,7 +9,7 @@ export async function POST(req) {
     .updateOne(
       { email: email, "habits.id": id },
       {
-        $set: { "habits.$.check": !check },
+        $set: { "habits.$.check": check },
       }
     );
   if (habitCheck) {

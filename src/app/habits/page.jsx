@@ -30,7 +30,13 @@ export default async function Habits() {
       <div className={styles.topbar}>
         <h1 className={styles.title}>
           All Habits -{" "}
-          {`${(checkedHabits / currentUser.length) * 100}% Completed`}
+          <span style={{ color: "#37e3f0", cursor: "pointer" }}>
+            {`${
+              currentUser.length > 0
+                ? `${(checkedHabits / currentUser.length) * 100}% Completed`
+                : "No Habits to Complete"
+            }`}
+          </span>
         </h1>
         <div className={styles.createButton}>
           <CreateTodoModal email={session.user.email} type="habits" />

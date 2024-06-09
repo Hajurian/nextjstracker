@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Todo from "../components/Todo";
+import { makeDate } from "../components/makeDate";
 import styles from "@/app/styles/todos.module.css";
 
 export default async function Todos() {
@@ -23,14 +24,6 @@ export default async function Todos() {
     return user.user.todos;
   }
   //function to get today's date
-  function makeDate() {
-    let today = new Date();
-    return `${today.getFullYear()}-${
-      today.getMonth() + 1 < 10
-        ? `0${today.getMonth() + 1}`
-        : `${today.getMonth() + 1}`
-    }-${today.getDate() < 10 ? `0${today.getDate()}` : `${today.getDate()}`}`;
-  }
   //getting the todos and sorting them
   let currentUser = await getTodos();
   currentUser = currentUser.sort((a, b) => a.date.localeCompare(b.date));
