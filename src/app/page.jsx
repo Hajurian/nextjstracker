@@ -1,5 +1,9 @@
 import styles from "@/app/styles/page.module.css";
 
 export default function Home() {
-  return <div>Stuff</div>;
+  return (
+    <>
+      <h1>Hi</h1>
+    </>
+  );
 }

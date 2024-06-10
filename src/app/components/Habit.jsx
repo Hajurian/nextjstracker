@@ -78,12 +78,12 @@ export default function Todo(props) {
         </div>
         <div className={styles.streakcontainer}>
           <div className={styles.streak}>
-            <p>{props.streak.streak}</p>
-            <p>Current Streak</p>
+            <p style={{ fontSize: "2rem" }}>{props.streak.streak}</p>
+            <p style={{ opacity: 0.7 }}>Current Streak</p>
           </div>
           <div className={styles.streak}>
-            <p>{props.streak.longest}</p>
-            <p>Longest Streak</p>
+            <p style={{ fontSize: "2rem" }}>{props.streak.longest}</p>
+            <p style={{ opacity: 0.7 }}>Longest Streak</p>
           </div>
         </div>
       </div>

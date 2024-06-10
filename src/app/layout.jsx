@@ -4,6 +4,7 @@ import AuthButton from "./components/AuthButton";
 import SessionProvider from "@/app/components/SessionProvider";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
+import Navbar from "./components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -22,17 +23,7 @@ export default async function RootLayout({ children }) {
               Productivity Tracker
             </Link>
             {/* {session ? <UserData /> : null} */}
-            <div className="links">
-              <Link href="/" className="link">
-                Home
-              </Link>
-              <Link href="/todos" className="link">
-                Todos
-              </Link>
-              <Link href="/habits" className="link">
-                Habits
-              </Link>
-            </div>
+            <Navbar />
             <AuthButton />
           </nav>
           <main className="maincontent">{children}</main>
