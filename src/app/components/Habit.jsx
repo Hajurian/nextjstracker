@@ -57,25 +57,34 @@ export default function Todo(props) {
       <div
         className={`${styles.habitcontainer} ${marked ? styles.active : ""} `}
       >
-        <h1>{props.title}</h1>
-        <div className={styles.streakcontainer}>
-          <p style={{ color: "#37e3f0" }}>
-            Current Streak {props.streak.streak.toString()} Days
-          </p>
-          <p style={{ color: "#37e3f0" }}>
-            Longest Streak {props.streak.longest.toString()} Days
-          </p>
+        <div className={styles.topcontainer}>
+          <h1
+            className={styles.habittitle}
+            style={{ textDecoration: `${marked ? "line-through" : "none"}` }}
+          >
+            {props.title}
+          </h1>
+          <div className={styles.buttoncontainer}>
+            <Checkbox
+              onChange={handleClick}
+              checked={marked}
+              color="secondary"
+              size="large"
+            />
+            <button onClick={handleDelete} className={styles.deletebutton}>
+              <FaTrash size={25} />
+            </button>
+          </div>
         </div>
-        <div className={styles.buttoncontainer}>
-          <Checkbox
-            onChange={handleClick}
-            checked={marked}
-            color="secondary"
-            size="large"
-          />
-          <button onClick={handleDelete} className={styles.deletebutton}>
-            <FaTrash size={25} />
-          </button>
+        <div className={styles.streakcontainer}>
+          <div className={styles.streak}>
+            <p>{props.streak.streak}</p>
+            <p>Current Streak</p>
+          </div>
+          <div className={styles.streak}>
+            <p>{props.streak.longest}</p>
+            <p>Longest Streak</p>
+          </div>
         </div>
       </div>
     </>

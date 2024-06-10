@@ -23,7 +23,7 @@
     margin-right: 2rem;
 }
 .habitcontainer {
-    width:18rem;
+    width:30rem;
     height:18rem;
     margin:2rem 1rem;
     padding-left:1rem;
@@ -35,6 +35,14 @@
     transition: all 0.5s;
     box-shadow: rgb(17, 20, 24) 0px 20px 30px -10px;
 }
+.topcontainer {
+    display: flex;
+    width:100%;
+    justify-content: center;
+}
+.habittitle {
+    width:100%;
+}
 .habitcontainer:hover {
     transform: scale(1.04);
 }
@@ -43,7 +51,7 @@
     border: 2px solid #9f149f;
 }
 .buttoncontainer {
-    width: 100%;
+    width: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,9 +75,15 @@
     width: 100%;
     height:5rem;
     display: flex;
+    justify-content: center;
+    
+}
+.streak {
+    height:5rem;
+    width:3rem;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-}
-.streakcontainer p {
-    line-height: 0;
+    align-items: center;
+    margin:auto;
 }
