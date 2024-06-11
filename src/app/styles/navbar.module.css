@@ -2,17 +2,27 @@
     display: flex;
     flex-direction: column;
     margin-top:4rem;
+    width:100%;
+    margin-bottom: auto;
   }
   .link {
     font-size:x-large;
     text-decoration: none;
-    line-height: 2.5rem;
+    line-height: 3rem;
     color:	#FAF9F6;
     width:100%;
-    height:2.5rem;
+    height:3rem;
     text-align: center;
     transition: 0.5s all;
   }
   .link:hover {
     background: rgb(15,18,31);
+  }
+  .active {
+    color:#b320b3;
+    box-shadow:5px 0 0 #b320b3 inset;
+    background-color: #432f63;
+  }
+  .active:hover {
+    background-color: #432f63;
   }

@@ -15,8 +15,7 @@ export default async function UserData() {
 
   return (
     <>
-      <h1>Name: {user.user.name}</h1>
-      <h2>Email: {user.user.email}</h2>
+      <h2 className="userinfo">Logged in as {user.user.email}</h2>
     </>
   );
 }

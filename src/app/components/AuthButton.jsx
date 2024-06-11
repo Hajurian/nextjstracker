@@ -22,7 +22,10 @@ export default function AuthButton() {
   if (session) {
     return (
       <>
-        <button onClick={() => signOut({ callbackUrl: "/", redirect: true })}>
+        <button
+          onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+          className="signbutton"
+        >
           Sign out
         </button>
       </>
@@ -34,6 +37,7 @@ export default function AuthButton() {
         onClick={() => {
           signIn();
         }}
+        className="signbutton"
       >
         Sign in
       </button>
