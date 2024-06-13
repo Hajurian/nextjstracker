@@ -11,7 +11,7 @@ export async function POST(req) {
   let change = check ? 1 : -1;
   //value for the longest streak
   let longestVal = streakVal >= longest ? streakVal + change : longest;
-
+  streakVal = streakVal + change > -1 ? streakVal + change : 0;
   const mongoClient = await clientPromise;
   const updateStreak = await mongoClient
     .db("NextjsTracker")
@@ -23,7 +23,7 @@ export async function POST(req) {
           "habits.$.streak": {
             latest: date,
             longest: longestVal,
-            streak: streakVal + change,
+            streak: streakVal,
           },
         },
       }
