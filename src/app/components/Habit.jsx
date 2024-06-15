@@ -4,10 +4,17 @@ import { useRouter } from "next/navigation";
 import { makeDate } from "./makeDate";
 import { Checkbox } from "@mui/material";
 import { FaTrash } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function Todo(props) {
   const router = useRouter();
   const [marked, setMarked] = useState(props.check);
+  useEffect(() => {
+    if (makeDate().localeCompare(props.streak.latest) != 0) {
+      setMarked(false);
+    }
+  }, []);
+
+  //the delete function
   async function handleDelete() {
     await fetch("http://localhost:3000/api/remove", {
       method: "POST",
@@ -22,6 +29,7 @@ export default function Todo(props) {
     });
     router.refresh();
   }
+  //the click function
   async function handleClick() {
     setMarked(!marked);
     await fetch("http://localhost:3000/api/habitCheck", {
@@ -35,6 +43,8 @@ export default function Todo(props) {
         check: !marked,
       }),
     });
+
+    //the streak updating function
     await fetch("http://localhost:3000/api/updateStreak", {
       method: "POST",
       headers: {

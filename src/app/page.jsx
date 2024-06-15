@@ -1,5 +1,6 @@
 import styles from "@/app/styles/home.module.css";
 import { getServerSession } from "next-auth";
+import { makeDate } from "./components/makeDate";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -20,11 +21,15 @@ export default async function Home() {
     }),
   });
   const user = await res.json();
+  const date = makeDate();
   return (
     <>
       <div className={styles.homecontainer}>
         <div className={styles.topcontainer}>
-          <div className={styles.smallinfo}></div>
+          <div className={styles.smallinfo}>
+            <h1>Today's Date</h1>
+            <h2>{date}</h2>
+          </div>
           <div className={styles.smallinfo}></div>
           <div className={styles.smallinfo}></div>
         </div>
