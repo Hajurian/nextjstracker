@@ -1,14 +1,12 @@
 .homecontainer {
     width:100%;
     height:100%;
-    border: 1px solid black;
     border-radius:25px;
 }
 .topcontainer {
     width:60%;
     height:20%;
     display: flex;
-    border: 1px solid blue;
 }
 .middlecontainer {
     width:100%;
@@ -16,31 +14,49 @@
     display: flex;
 }
 .bottomcontainer {
-    width:100%;
-    height:50%;
+    width:60%;
+    height:30%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 .calendarcontainer {
-    width:75%;
+    width:60%;
     height:100%;
     border: 1px solid red;
 }
 .todobox {
-    width:15rem;
-    height:15rem;
+    width:40%;
+    height:100%rem;
     margin:2rem 1rem;
-    padding-left:1rem;
-    padding-right:1rem;
     border-radius: 10px;
     background-color: #2b314a;
     color:#FAF9F6;
     transition: all 0.5s;
     cursor: pointer;
     text-wrap:wrap;
-    animation: motion 0.5s;
-    animation-fill-mode: none;
     opacity: 1;
     box-shadow: rgb(17, 20, 24) 0px 20px 30px -10px;
+}
+.todobox h1 {
+    line-height: 0;
+    margin-left:1rem;
+    font-size: 3rem;
+    padding:1rem;
+}
+.todoboxcontent {
+    display: flex;
+    width:100%;
+    transition:0.5s all;
+}
+.todoboxcontent:hover {
+    background-color: rgb(18, 22, 37);
+}
+.todoboxcontent h2{
+    padding: 0.5rem 2rem;
+    width:50%;
+    
 }
 .smallinfo {
     width:15rem;
@@ -63,4 +79,62 @@
     align-items: center;
     justify-content: center;
     line-height: 0;
+    transition: all 0.5s;
+}
+.smallinfoprimary {
+    width:15rem;
+    height:8rem;
+    margin:1rem 1.5rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    border-radius: 10px;
+    background: rgb(199,38,199);
+background: linear-gradient(43deg, rgba(199,38,199,1) 0%, rgba(247,83,247,1) 93%);
+    color:#FAF9F6;
+    transition: all 0.5s;
+    cursor: pointer;
+    text-wrap:wrap;
+    animation: motion 0.5s;
+    animation-fill-mode: none;
+    opacity: 1;
+    box-shadow: rgb(17, 20, 24) 0px 20px 30px -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    transition: all 0.5s;
+}
+.smallinfosecondary {
+    width:15rem;
+    height:8rem;
+    margin:1rem 1.5rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    border-radius: 10px;
+    background: rgb(41,170,180);
+background: linear-gradient(300deg, rgba(41,170,180,1) 0%, rgba(55,227,240,1) 100%);
+    color:#FAF9F6;
+    transition: all 0.5s;
+    cursor: pointer;
+    text-wrap:wrap;
+    animation: motion 0.5s;
+    animation-fill-mode: none;
+    opacity: 1;
+    box-shadow: rgb(17, 20, 24) 0px 20px 30px -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    transition: all 0.5s;
+}
+.smallinfo:hover {
+    transform: scale(1.04);
+}
+.smallinfoprimary:hover {
+    transform: scale(1.04);
+}
+.smallinfosecondary:hover {
+    transform: scale(1.04);
 }

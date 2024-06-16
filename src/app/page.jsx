@@ -30,17 +30,32 @@ export default async function Home() {
             <h1>Today's Date</h1>
             <h2>{date}</h2>
           </div>
-          <div className={styles.smallinfo}></div>
-          <div className={styles.smallinfo}></div>
+          <div className={styles.smallinfoprimary}>
+            <h1>Todos </h1>
+            <h2>{user.user.todos.length} Remaining</h2>
+          </div>
+          <div className={styles.smallinfosecondary}>
+            <h1>Habits</h1>
+          </div>
         </div>
         <div className={styles.middlecontainer}>
           <div className={styles.calendarcontainer}>Calendar</div>
-          <div>Mr Incredibles thing</div>
+          <div className={styles.todobox}>
+            <h1>Todos</h1>
+            {user.user.todos.map((todo, id) => {
+              if (id > 2) {
+                return;
+              }
+              return (
+                <div key={id} className={styles.todoboxcontent}>
+                  <h2>{todo.todo}</h2>
+                  <h2>{todo.date}</h2>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className={styles.bottomcontainer}>
-          <div className={styles.todobox}>Todo list</div>
-          <div className={styles.habitbox}>Habits</div>
-        </div>
+        <div className={styles.bottomcontainer}></div>
       </div>
     </>
   );

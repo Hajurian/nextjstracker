@@ -19,8 +19,8 @@
     background: rgb(15,18,31);
   }
   .active {
-    color:#b320b3;
-    box-shadow:5px 0 0 #b320b3 inset;
+    color:#c726c7;
+    box-shadow:5px 0 0 #c726c7 inset;
     background-color: #432f63;
   }
   .active:hover {

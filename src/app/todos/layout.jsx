@@ -23,11 +23,13 @@ export default async function Todos({ children }) {
       <div className={styles.topbar}>
         <h1 className={styles.title}>
           All Tasks -{" "}
-          {user.user.todos.length > 0
-            ? `${user.user.todos.length} ${
-                user.user.todos.length == 1 ? "Task" : "Tasks"
-              } Remaining`
-            : "You Have No tasks"}
+          <span style={{ color: "#37e3f0", cursor: "pointer" }}>
+            {user.user.todos.length > 0
+              ? `${user.user.todos.length} ${
+                  user.user.todos.length == 1 ? "Task" : "Tasks"
+                } Remaining`
+              : "You Have No tasks"}
+          </span>
         </h1>
         <div className={styles.createButton}>
           <CreateTodoModal email={session.user.email} type="todos" />
