@@ -1,6 +1,8 @@
 import styles from "@/app/styles/home.module.css";
 import { getServerSession } from "next-auth";
 import { makeDate } from "./components/makeDate";
+import Link from "next/link";
+import Calendar from "./components/Calendar";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -41,15 +43,21 @@ export default async function Home() {
         <div className={styles.middlecontainer}>
           <div className={styles.calendarcontainer}>Calendar</div>
           <div className={styles.todobox}>
-            <h1>Todos</h1>
+            <Link href="/todos" className={styles.viewmore}>
+              <h1>Todos</h1>
+            </Link>
             {user.user.todos.map((todo, id) => {
               if (id > 2) {
                 return;
               }
               return (
                 <div key={id} className={styles.todoboxcontent}>
-                  <h2>{todo.todo}</h2>
-                  <h2>{todo.date}</h2>
+                  <Link href="/todos" className={styles.todoboxlink}>
+                    <h2>{todo.todo}</h2>
+                  </Link>
+                  <Link href="/todos" className={styles.todoboxlink}>
+                    <h2>{todo.date}</h2>
+                  </Link>
                 </div>
               );
             })}

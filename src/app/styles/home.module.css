@@ -28,8 +28,8 @@
 }
 .todobox {
     width:40%;
-    height:100%rem;
-    margin:2rem 1rem;
+    height:100%;
+    margin:0rem 1rem;
     border-radius: 10px;
     background-color: #2b314a;
     color:#FAF9F6;
@@ -53,10 +53,11 @@
 .todoboxcontent:hover {
     background-color: rgb(18, 22, 37);
 }
-.todoboxcontent h2{
-    padding: 0.5rem 2rem;
+.todoboxlink{
+    padding: 0.25rem 2rem;
     width:50%;
-    
+    color:#FAF9F6;
+    text-decoration: none;
 }
 .smallinfo {
     width:15rem;
@@ -113,7 +114,7 @@ background: linear-gradient(43deg, rgba(199,38,199,1) 0%, rgba(247,83,247,1) 93%
     padding-right:1rem;
     border-radius: 10px;
     background: rgb(41,170,180);
-background: linear-gradient(300deg, rgba(41,170,180,1) 0%, rgba(55,227,240,1) 100%);
+    background: linear-gradient(300deg, rgba(41,170,180,1) 0%, rgba(55,227,240,1) 100%);
     color:#FAF9F6;
     transition: all 0.5s;
     cursor: pointer;
@@ -137,4 +138,13 @@ background: linear-gradient(300deg, rgba(41,170,180,1) 0%, rgba(55,227,240,1) 10
 }
 .smallinfosecondary:hover {
     transform: scale(1.04);
+}
+.viewmore {
+    text-decoration: none;
+    color:#FAF9F6;
+    font-size:1.5rem;
+    transition: all 0.5s;
+}
+.viewmore:hover {
+    color:#37e3f0;
 }
