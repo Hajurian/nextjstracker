@@ -1,7 +1,9 @@
-export default function Calendar() {
+import Calendar from "react-calendar";
+import "../styles/Calendar.css";
+export default function CalendarComponent() {
   return (
     <>
-      <h1>Calendar</h1>
+      <Calendar />
     </>
   );
 }

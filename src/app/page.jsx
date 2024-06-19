@@ -24,6 +24,7 @@ export default async function Home() {
   });
   const user = await res.json();
   const date = makeDate();
+  const habits = user.user.habits.filter((habit) => !habit.check).length;
   return (
     <>
       <div className={styles.homecontainer}>
@@ -38,16 +39,19 @@ export default async function Home() {
           </div>
           <div className={styles.smallinfosecondary}>
             <h1>Habits</h1>
+            <h2>{habits == 0 ? "None" : habits} Remaining</h2>
           </div>
         </div>
         <div className={styles.middlecontainer}>
-          <div className={styles.calendarcontainer}>Calendar</div>
+          <div className={styles.calendarcontainer}>
+            <Calendar />
+          </div>
           <div className={styles.todobox}>
             <Link href="/todos" className={styles.viewmore}>
               <h1>Todos</h1>
             </Link>
             {user.user.todos.map((todo, id) => {
-              if (id > 2) {
+              if (id > 5) {
                 return;
               }
               return (
@@ -63,7 +67,6 @@ export default async function Home() {
             })}
           </div>
         </div>
-        <div className={styles.bottomcontainer}></div>
       </div>
     </>
   );
