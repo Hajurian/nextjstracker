@@ -16,7 +16,7 @@ export default function Todo(props) {
 
   //the delete function
   async function handleDelete() {
-    const link = new URL(`${process.env.NEXTAUTH_URL}/api/remove`);
+    const link = new URL(`${process.env.NEXT_PUBLIC_URL}/api/remove`);
     await fetch(link, {
       method: "POST",
       headers: {
@@ -32,7 +32,7 @@ export default function Todo(props) {
   }
   //the click function
   async function handleClick() {
-    const linkCheck = new URL(`${process.env.NEXTAUTH_URL}/api/habitCheck`);
+    const linkCheck = new URL(`${process.env.NEXT_PUBLIC_URL}/api/habitCheck`);
     setMarked(!marked);
     await fetch(linkCheck, {
       method: "POST",
@@ -47,7 +47,9 @@ export default function Todo(props) {
     });
 
     //the streak updating function
-    const linkUpdate = new URL(`${process.env.NEXTAUTH_URL}/api/updateStreak`);
+    const linkUpdate = new URL(
+      `${process.env.NEXT_PUBLIC_URL}/api/updateStreak`
+    );
     await fetch(linkUpdate, {
       method: "POST",
       headers: {

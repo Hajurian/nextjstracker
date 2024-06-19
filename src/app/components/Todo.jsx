@@ -11,7 +11,7 @@ export default function Todo(props) {
   const [editDesc, setEditDesc] = useState(props.desc);
   const [editDate, setEditDate] = useState(props.date);
   async function handleDelete() {
-    const link = new URL(`${process.env.NEXTAUTH_URL}/api/remove`);
+    const link = new URL(`${process.env.NEXT_PUBLIC_URL}/api/remove`);
     await fetch(link, {
       method: "POST",
       headers: {
@@ -26,7 +26,7 @@ export default function Todo(props) {
     router.refresh();
   }
   async function handleEdit() {
-    const link = new URL(`${process.env.NEXTAUTH_URL}/api/editTodo`);
+    const link = new URL(`${process.env.NEXT_PUBLIC_URL}/api/editTodo`);
     await fetch(link, {
       method: "POST",
       headers: {

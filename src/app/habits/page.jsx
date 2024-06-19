@@ -11,7 +11,7 @@ export default async function Habits() {
   }
   //function to get the todos
   async function getHabits() {
-    const link = new URL(`${process.env.NEXTAUTH_URL}/api/getUser`);
+    const link = new URL(`${process.env.NEXT_PUBLIC_URL}/api/getUser`);
     const res = await fetch(link, {
       method: "POST",
       headers: {

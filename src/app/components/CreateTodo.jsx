@@ -9,7 +9,7 @@ export default function CreateTodo(props) {
   const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
-    const link = new URL(`${process.env.NEXTAUTH_URL}/api/update`);
+    const link = new URL(`${process.env.NEXT_PUBLIC_URL}/api/update`);
     await fetch(link, {
       method: "POST",
       headers: {
