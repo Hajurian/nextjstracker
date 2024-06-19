@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 export default function Todo(props) {
   const router = useRouter();
   const [marked, setMarked] = useState(props.check);
+  const latest = props.streak.latest;
   useEffect(() => {
-    if (makeDate().localeCompare(props.streak.latest) != 0) {
+    if (latest && makeDate().localeCompare(latest) != 0) {
       setMarked(false);
     }
   }, []);
