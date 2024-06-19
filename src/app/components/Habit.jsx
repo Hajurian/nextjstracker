@@ -16,7 +16,8 @@ export default function Todo(props) {
 
   //the delete function
   async function handleDelete() {
-    await fetch("http://localhost:3000/api/remove", {
+    const link = new URL(`${process.env.NEXTAUTH_URL}/api/remove`);
+    await fetch(link, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,8 +32,9 @@ export default function Todo(props) {
   }
   //the click function
   async function handleClick() {
+    const linkCheck = new URL(`${process.env.NEXTAUTH_URL}/api/habitCheck`);
     setMarked(!marked);
-    await fetch("http://localhost:3000/api/habitCheck", {
+    await fetch(linkCheck, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +47,8 @@ export default function Todo(props) {
     });
 
     //the streak updating function
-    await fetch("http://localhost:3000/api/updateStreak", {
+    const linkUpdate = new URL(`${process.env.NEXTAUTH_URL}/api/updateStreak`);
+    await fetch(linkUpdate, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -2,7 +2,8 @@ import { getServerSession } from "next-auth";
 
 export default async function UserData() {
   const session = await getServerSession();
-  const res = await fetch("http://localhost:3000/api/getUser", {
+  const link = new URL(`${process.env.NEXTAUTH_URL}/api/getUser`);
+  const res = await fetch(link, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

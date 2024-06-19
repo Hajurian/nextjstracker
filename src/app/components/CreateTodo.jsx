@@ -9,7 +9,8 @@ export default function CreateTodo(props) {
   const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch("http://localhost:3000/api/update", {
+    const link = new URL(`${process.env.NEXTAUTH_URL}/api/update`);
+    await fetch(link, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

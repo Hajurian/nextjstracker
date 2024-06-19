@@ -6,7 +6,8 @@ export default function AuthButton() {
   async function handleRegister() {
     if (session) {
       const { name, email } = session?.user;
-      const res = await fetch("http://localhost:3000/api/register", {
+      const link = new URL(`${process.env.NEXTAUTH_URL}/api/register`);
+      const res = await fetch(link, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
