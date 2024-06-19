@@ -33,7 +33,9 @@ export default async function Habits() {
           <span style={{ color: "#37e3f0", cursor: "pointer" }}>
             {`${
               currentUser.length > 0
-                ? `${(checkedHabits / currentUser.length) * 100}% Completed`
+                ? `${Math.floor(
+                    (checkedHabits / currentUser.length) * 100
+                  )}% Completed`
                 : "No Habits to Complete"
             }`}
           </span>
