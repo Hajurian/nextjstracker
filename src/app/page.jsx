@@ -6,10 +6,40 @@ import Calendar from "./components/Calendar";
 
 export default async function Home() {
   const session = await getServerSession();
+  const date = makeDate();
   if (!session || !session.user) {
     return (
       <>
-        <h1>No session</h1>
+        <div className={styles.homecontainer}>
+          <div className={styles.topcontainer}>
+            <div className={styles.smallinfo}>
+              <h1>Today's Date</h1>
+              <h2>{date}</h2>
+            </div>
+            <div className={styles.smallinfoprimary}>
+              <h1>Todos </h1>
+            </div>
+            <div className={styles.smallinfosecondary}>
+              <h1>Habits</h1>
+            </div>
+          </div>
+          <div className={styles.middlecontainer}>
+            <div className={styles.calendarcontainer}>
+              <Calendar />
+            </div>
+            <div className={styles.todobox}>
+              <Link href="/todos" className={styles.viewmore}>
+                <h1>Todos</h1>
+              </Link>
+              <div className={styles.todoboxcontent}>
+                <h2 className={styles.todoboxlink}>
+                  Sign in to start making your list!
+                </h2>
+                <h2 className={styles.todoboxlink}>{date}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }
@@ -23,7 +53,6 @@ export default async function Home() {
     }),
   });
   const user = await res.json();
-  const date = makeDate();
   const habits = user.user.habits.filter((habit) => !habit.check).length;
   return (
     <>

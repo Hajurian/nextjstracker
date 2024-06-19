@@ -6,6 +6,9 @@ import { useState } from "react";
 export default function CalendarComponent(props) {
   const todos = props.todos;
   const [active, setActive] = useState("");
+  if (!todos) {
+    return <Calendar />;
+  }
   return (
     <>
       <Calendar
