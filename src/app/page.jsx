@@ -60,7 +60,7 @@ export default async function Home() {
       <div className={styles.homecontainer}>
         <div className={styles.topcontainer}>
           <div className={styles.smallinfo}>
-            <h1>Today's Date</h1>
+            <h1>Today&apos;s Date</h1>
             <h2>{date}</h2>
           </div>
           <div className={styles.smallinfoprimary}>

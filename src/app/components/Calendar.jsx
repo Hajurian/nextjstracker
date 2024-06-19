@@ -33,7 +33,7 @@ export default function CalendarComponent(props) {
             if (active.localeCompare(date) == 0) {
               return todos.map((todo, id) => {
                 if (id < 3 && todo.date.localeCompare(active) == 0) {
-                  return <li>{todo.todo}</li>;
+                  return <li key={id}>{todo.todo}</li>;
                 }
                 return;
               });
