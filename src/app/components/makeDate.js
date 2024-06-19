@@ -23,3 +23,10 @@ export function compareDate(prevDate, date) {
   }
   return false;
 }
+export function createDate(month, day, year) {
+  let monthdigit = month < 10;
+  let daydigit = day < 10;
+  return `${year}-${monthdigit ? "0" : ""}${month}-${
+    daydigit ? "0" : ""
+  }${day}`;
+}

@@ -44,7 +44,7 @@ export default async function Home() {
         </div>
         <div className={styles.middlecontainer}>
           <div className={styles.calendarcontainer}>
-            <Calendar />
+            <Calendar todos={user.user.todos} />
           </div>
           <div className={styles.todobox}>
             <Link href="/todos" className={styles.viewmore}>
